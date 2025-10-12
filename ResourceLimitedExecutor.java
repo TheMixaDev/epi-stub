@@ -14,7 +14,6 @@ public class ResourceLimitedExecutor {
             throws TimeoutException, ExecutionException {
         Future<T> future = executor.submit(task);
         try {
-            // Ограничение времени выполнения
             return future.get(timeoutSeconds, TimeUnit.SECONDS);
         } catch (TimeoutException e) {
             future.cancel(true);  // прерываем задачу
